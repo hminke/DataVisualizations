@@ -16,68 +16,57 @@ for line in data:
     if words[0] == "Rejected":
         if words[1] == "Female":
             if words[2] == "A":
-                femaleRejected[0] += 1
+                femaleRejected[0] = float(words[3])
             elif words[2] == "B":
-                femaleRejected[1] += 1
+                femaleRejected[1] = float(words[3])
             elif words[2] == "C":
-                femaleRejected[2] += 1
+                femaleRejected[2] = float(words[3])
             elif words[2] == "D":
-                femaleRejected[3] += 1
+                femaleRejected[3] = float(words[3])
             elif words[2] == "E":
-                femaleRejected[4] += 1
+                femaleRejected[4] = float(words[3])
             elif words[2] == "F":
-                femaleRejected[5] += 1
+                femaleRejected[5] = float(words[3])
         elif words[1] == "Male":
             if words[2] == "A":
-                maleRejected[0] += 1
+                maleRejected[0] = float(words[3])
             elif words[2] == "B":
-                maleRejected[1] += 1
+                maleRejected[1] = float(words[3])
             elif words[2] == "C":
-                maleRejected[2] += 1
+                maleRejected[2] = float(words[3])
             elif words[2] == "D":
-                maleRejected[3] += 1
+                maleRejected[3] = float(words[3])
             elif words[2] == "E":
-                maleRejected[4] += 1
+                maleRejected[4] = float(words[3])
             elif words[2] == "F":
-                maleRejected[5] += 1
+                maleRejected[5] = float(words[3])
     if words[0] == "Admitted":
         if words[1] == "Female":
             if words[2] == "A":
-                femaleAdmitted[0] += 1
+                femaleAdmitted[0] = float(words[3])
             elif words[2] == "B":
-                femaleAdmitted[1] += 1
+                femaleAdmitted[1] = float(words[3])
             elif words[2] == "C":
-                femaleAdmitted[2] += 1
+                femaleAdmitted[2] = float(words[3])
             elif words[2] == "D":
-                femaleAdmitted[3] += 1
+                femaleAdmitted[3] = float(words[3])
             elif words[2] == "E":
-                femaleAdmitted[4] += 1
+                femaleAdmitted[4] = float(words[3])
             elif words[2] == "F":
-                femaleAdmitted[5] += 1
+                femaleAdmitted[5] = float(words[3])
         elif words[1] == "Male":
             if words[2] == "A":
-                maleAdmitted[0] += 1
+                maleAdmitted[0] = float(words[3])
             elif words[2] == "B":
-                maleAdmitted[1] += 1
+                maleAdmitted[1] = float(words[3])
             elif words[2] == "C":
-                maleAdmitted[2] += 1
+                maleAdmitted[2] = float(words[3])
             elif words[2] == "D":
-                maleAdmitted[3] += 1
+                maleAdmitted[3] = float(words[3])
             elif words[2] == "E":
-                maleAdmitted[4] += 1
+                maleAdmitted[4] = float(words[3])
             elif words[2] == "F":
-                maleAdmitted[5] += 1
-
-#p1 = plt.bar(ind, maleRejected, width)
-#p2 = plt.bar(ind, femaleRejected, width, bottom=maleRejected)
-#p3 = plt.bar(ind, maleAdmitted, width)
-#p4 = plt.bar(ind, femaleAdmitted, width, bottom=maleAdmitted)
-
-#plt.ylabel('Number of Students')
-#plt.title('Acceptance Rates at UC Berkley')
-#plt.xticks(ind, ('Dept. A', 'Dept. B', 'Dept. C', 'Dept. D', 'Dept. E', 'Dept. F'))
-#plt. legend((p3[0], p4[0], p1[0], p2[0]), ('Men Admitted', 'Women Admitted', 'Men Rejected', 'Women Rejected'))
-#plt.show()
+                maleAdmitted[5] = float(words[3])
 
 fig, ax = plt.subplots()
 admittedMales = ax.bar(ind - width/2, maleAdmitted, width, color='SkyBlue')

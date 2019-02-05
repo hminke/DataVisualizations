@@ -23,11 +23,3 @@ Admitted,Male,F,22
 Rejected,Male,F,351
 Admitted,Female,F,24
 Rejected,Female,F,317
-Rejected,Male,F,200
-Rejected,Male,A,318
-Rejected,Male,A,50
-Rejected,Male,B,100
-Rejected,Male,F,358
-Rejected,Male,C,146
-Rejected,Male,D,48
-Rejected,Male,E,278
