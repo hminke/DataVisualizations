@@ -1,3 +1,4 @@
+#!/usr/bin/python
 import csv
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,8 +50,8 @@ with open('June2017.csv', 'r') as fil:
         elif hour[0] == '20':
             dailyWatts[14] = (dailyWatts[14] + watts) / 2.0
 
-        print(hour)
-print(dailyWatts)
+        #print(hour)
+#print(dailyWatts)
 
 p1 = plt.bar(ind, dailyWatts, width)
 
