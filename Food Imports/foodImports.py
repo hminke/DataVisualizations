@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 fig, ax, = plt.subplots()
+msg = ax.annotate('Click points for annotation', xy=(0, 0), xytext=(2, 20000))
 
 with open("food_imports.csv", 'r') as fil:
     data = csv.DictReader(fil, delimiter=',')
@@ -17,10 +18,13 @@ with open("food_imports.csv", 'r') as fil:
                 ax.scatter(year, dollarAmount, color=color, picker=1, label=foodName)
 
 def onpick(event):
+    global msg
     category = event.artist.get_label()
     x = event.artist.get_offsets()
     dollar = int(x.item(0) + 1999)
-    print("Category: {},\nYear: {},\n$ Million: {}\n".format(category, dollar, x.item(1)))
+    msg.remove()
+    msg = ax.annotate("Category: {},\nYear: {},\n$ Million: {}\n".format(category, dollar, x.item(1)),
+                      xy=(0, 0), xytext=(2, 18000))
 
 plt.xlabel('Year')
 plt.ylabel('$ Millions')
