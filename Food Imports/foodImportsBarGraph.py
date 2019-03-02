@@ -121,10 +121,27 @@ category8Plot = ax.bar(x, category8, picker=1, label=category8FoodName,
 category9Plot = ax.bar(x, category9, picker=1, label=category9FoodName,
                        bottom=category1+category2+category3+category4+category5+category6+category7+category8)
 category10Plot = ax.bar(x, category10, picker=1, label=category10FoodName,
-                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+category9)
+                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+
+                              category9)
+category11Plot = ax.bar(x, category11, picker=1, label=category11FoodName,
+                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+
+                              category9+category10)
+category12Plot = ax.bar(x, category12, picker=1, label=category12FoodName,
+                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+
+                              category9+category10+category11)
+category13Plot = ax.bar(x, category13, picker=1, label=category13FoodName,
+                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+
+                              category9+category10+category11+category12)
+category14Plot = ax.bar(x, category14, picker=1, label=category14FoodName,
+                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+
+                              category9+category10+category11+category12+category13)
+category15Plot = ax.bar(x, category15, picker=1, label=category15FoodName,
+                       bottom=category1+category2+category3+category4+category5+category6+category7+category8+
+                              category9+category10+category11+category12+category13+category14)
 
 plt.xlabel('Year')
 plt.ylabel('$ Millions')
 plt.xticks(x)
+plt.legend(loc='upper left', bbox_to_anchor=(0., 1.1))
 fig.canvas.mpl_connect('pick_event', onpick)
 plt.show()
