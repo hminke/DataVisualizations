@@ -141,6 +141,7 @@ category15Plot = ax.bar(x, category15, picker=1, label=category15FoodName,
 
 plt.xlabel('Year')
 plt.ylabel('$ Millions')
+plt.title('Food Imports by Year')
 plt.xticks(x)
 plt.legend(loc='upper left', bbox_to_anchor=(0., 1.1))
 fig.canvas.mpl_connect('pick_event', onpick)
