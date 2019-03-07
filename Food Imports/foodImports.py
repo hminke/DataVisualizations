@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 fig, ax, = plt.subplots()
-msg = ax.annotate('Click points for annotation', xy=(0, 0), xytext=(10, 20000))
+msg = ax.annotate('Click points for annotation', xy=(0, 0), xytext=(4, 20000))
 legendInfo = [None] * 15
 category = ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
 dollar = 0
@@ -34,9 +34,10 @@ def onpick(event):
     msg.remove()
     msg = ax.annotate("Category: {},\nYear: {},\n$ Million: {}\n".format(categories, amount, x.item(1)),
                       xy=(0, 0), xytext=(4, 18000))
+    plt.show()
 
 plt.xlabel('Year')
-plt.ylabel('$ Millions')
+plt.ylabel('Price ($) per Million')
 plt.legend((legendInfo[0], legendInfo[1], legendInfo[2], legendInfo[3], legendInfo[4],
             legendInfo[5], legendInfo[6], legendInfo[7], legendInfo[8], legendInfo[9],
             legendInfo[10], legendInfo[11], legendInfo[12], legendInfo[13], legendInfo[14]),
