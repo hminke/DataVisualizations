@@ -30,8 +30,6 @@ with open("food_imports.csv", 'r') as fil:
                     categoryFoodName.append(foodName)
         index = 0
 
-print('{}\n'.format(category))
-print('{}\n'.format(categoryFoodName))
 # def onpick(event):
 #     global msg
 #     categories = event.artist.get_label()

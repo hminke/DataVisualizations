@@ -6,7 +6,7 @@ fig, ax, = plt.subplots()
 index = 0
 N = 15
 ind = np.arange(N)
-width = 0.05
+width = 0.04
 
 years = np.zeros(19)
 foodName = []
@@ -98,41 +98,30 @@ with open("food_imports.csv", 'r') as fil:
                     years[18] = year
         index = index + 1
 
-ax.bar(ind - width*1.5, data99, width, picker=1)
-ax.bar(ind - width/2, data00, width, picker=1)
-ax.bar(ind + width/2, data01, width, picker=1)
-ax.bar(ind + width*1.5, data02, width, picker=1)
+ax.bar(ind - width*9.5, data99, width, picker=1)
+ax.bar(ind - width*8.5, data00, width, picker=1)
+ax.bar(ind - width*7.5, data01, width, picker=1)
+ax.bar(ind - width*6.5, data02, width, picker=1)
+ax.bar(ind - width*5.5, data03, width, picker=1)
+ax.bar(ind - width*4.5, data04, width, picker=1)
+ax.bar(ind - width*3.5, data05, width, picker=1)
+ax.bar(ind - width*2.5, data06, width, picker=1)
+ax.bar(ind - width*1.5, data07, width, picker=1)
+ax.bar(ind - width/2, data08, width, picker=1)
+ax.bar(ind + width/2, data09, width, picker=1)
+ax.bar(ind + width*1.5, data10, width, picker=1)
+ax.bar(ind + width*2.5, data11, width, picker=1)
+ax.bar(ind + width*3.5, data12, width, picker=1)
+ax.bar(ind + width*4.5, data13, width, picker=1)
+ax.bar(ind + width*5.5, data14, width, picker=1)
+ax.bar(ind + width*6.5, data15, width, picker=1)
+ax.bar(ind + width*7.5, data16, width, picker=1)
+ax.bar(ind + width*8.5, data17, width, picker=1)
 
-# category5Plot = ax.bar(years, category5, picker=1, label=category5FoodName,
-#                        bottom=category1+category2+category3+category4)
-# category6Plot = ax.bar(years, category6, picker=1, label=category6FoodName,
-#                        bottom=category1+category2+category3+category4+category5)
-# category7Plot = ax.bar(years, category7, picker=1, label=category7FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6)
-# category8Plot = ax.bar(years, category8, picker=1, label=category8FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7)
-# category9Plot = ax.bar(years, category9, picker=1, label=category9FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8)
-# category10Plot = ax.bar(years, category10, picker=1, label=category10FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8+
-#                               category9)
-# category11Plot = ax.bar(years, category11, picker=1, label=category11FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8+
-#                               category9+category10)
-# category12Plot = ax.bar(years, category12, picker=1, label=category12FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8+
-#                               category9+category10+category11)
-# category13Plot = ax.bar(years, category13, picker=1, label=category13FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8+
-#                               category9+category10+category11+category12)
-# category14Plot = ax.bar(years, category14, picker=1, label=category14FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8+
-#                               category9+category10+category11+category12+category13)
-# category15Plot = ax.bar(years, category15, picker=1, label=category15FoodName,
-#                        bottom=category1+category2+category3+category4+category5+category6+category7+category8+
-#                               category9+category10+category11+category12+category13+category14)
-plt.ylabel('Price ($) per Million')
-plt.title('Food Imports by Category')
-#plt.xticks()
-#plt.legend(loc='upper left', bbox_to_anchor=(0., 1.1))
+ax.set_ylabel('Price ($) per Million')
+ax.set_title('Food Imports by Category from 1999 - 2017')
+ax.set_xticks(ind)
+ax.set_xticklabels(('Live\nmeat\nanimals', 'Meats', 'Fish\nand\nshellfish', 'Dairy', 'Vegies', 'Fruits', 'Nuts',
+                    'Coffee,\ntea, and\nspices', 'Grains', 'Veg.\noils', 'Sugar\nand\ncandy',
+                    'Cocoa\nand\nchoc.', 'Other\nedible\nprod.', 'Bev.', '  Liquors'))
 plt.show()
