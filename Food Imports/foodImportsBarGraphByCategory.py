@@ -7,8 +7,11 @@ index = 0
 N = 15
 ind = np.arange(N)
 width = 0.04
+msg = ax.annotate('Click bars for annotation', xy=(0, 0), xytext=(6, 20000))
 
 years = np.zeros(19)
+dataYear = 0
+category = ''
 foodName = []
 plotCategory = []
 data99 = np.zeros(15)
@@ -98,6 +101,67 @@ with open("food_imports.csv", 'r') as fil:
                     years[18] = year
         index = index + 1
 
+def onpick(event):
+    amount = event.artist.get_height()
+    if amount in data99:
+        dataYear = 1999
+        foodType = foodName[0]
+    elif amount in data00:
+        dataYear = 2000
+        foodType = foodName[0]
+    elif amount in data01:
+        dataYear = 2001
+        foodType = foodName[0]
+    elif amount in data02:
+        dataYear = 2002
+        foodType = foodName[0]
+    elif amount in data03:
+        dataYear = 2003
+        foodType = foodName[0]
+    elif amount in data04:
+        dataYear = 2004
+        foodType = foodName[0]
+    elif amount in data05:
+        dataYear = 2005
+        foodType = foodName[0]
+    elif amount in data06:
+        dataYear = 2006
+        foodType = foodName[0]
+    elif amount in data07:
+        dataYear = 2007
+        foodType = foodName[0]
+    elif amount in data08:
+        dataYear = 2008
+        foodType = foodName[0]
+    elif amount in data09:
+        dataYear = 2009
+        foodType = foodName[0]
+    elif amount in data10:
+        dataYear = 2010
+        foodType = foodName[0]
+    elif amount in data11:
+        dataYear = 2011
+        foodType = foodName[0]
+    elif amount in data12:
+        dataYear = 2012
+        foodType = foodName[0]
+    elif amount in data13:
+        dataYear = 2013
+        foodType = foodName[0]
+    elif amount in data14:
+        dataYear = 2014
+        foodType = foodName[0]
+    elif amount in data15:
+        dataYear = 2015
+        foodType = foodName[0]
+    elif amount in data16:
+        dataYear = 2016
+        foodType = foodName[0]
+    elif amount in data17:
+        dataYear = 2017
+        foodType = foodName[0]
+    print("Price ($) per million: {},\nYear: {},\nCategory: {}".format(amount, dataYear, foodType))
+
 ax.bar(ind - width*9.5, data99, width, picker=1)
 ax.bar(ind - width*8.5, data00, width, picker=1)
 ax.bar(ind - width*7.5, data01, width, picker=1)
@@ -124,4 +188,5 @@ ax.set_xticks(ind)
 ax.set_xticklabels(('Live\nmeat\nanimals', 'Meats', 'Fish\nand\nshellfish', 'Dairy', 'Vegies', 'Fruits', 'Nuts',
                     'Coffee,\ntea, and\nspices', 'Grains', 'Veg.\noils', 'Sugar\nand\ncandy',
                     'Cocoa\nand\nchoc.', 'Other\nedible\nprod.', 'Bev.', '  Liquors'))
+fig.canvas.mpl_connect('pick_event', onpick)
 plt.show()
