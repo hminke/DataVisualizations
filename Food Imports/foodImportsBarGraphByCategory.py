@@ -102,65 +102,89 @@ with open("food_imports.csv", 'r') as fil:
         index = index + 1
 
 def onpick(event):
+    global msg
     amount = event.artist.get_height()
     if amount in data99:
         dataYear = 1999
-        foodType = foodName[0]
+        a = np.where(data99 == amount)[0]
+        print(a[0])
+        foodType = foodName[a[0]]
     elif amount in data00:
         dataYear = 2000
-        foodType = foodName[0]
+        a = np.where(data00 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data01:
         dataYear = 2001
-        foodType = foodName[0]
+        a = np.where(data01 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data02:
         dataYear = 2002
-        foodType = foodName[0]
+        a = np.where(data02 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data03:
         dataYear = 2003
-        foodType = foodName[0]
+        a = np.where(data03 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data04:
         dataYear = 2004
-        foodType = foodName[0]
+        a = np.where(data04 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data05:
         dataYear = 2005
-        foodType = foodName[0]
+        a = np.where(data05 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data06:
         dataYear = 2006
-        foodType = foodName[0]
+        a = np.where(data06 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data07:
         dataYear = 2007
-        foodType = foodName[0]
+        a = np.where(data07 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data08:
         dataYear = 2008
-        foodType = foodName[0]
+        a = np.where(data08 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data09:
         dataYear = 2009
-        foodType = foodName[0]
+        a = np.where(data09 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data10:
         dataYear = 2010
-        foodType = foodName[0]
+        a = np.where(data10 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data11:
         dataYear = 2011
-        foodType = foodName[0]
+        a = np.where(data11 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data12:
         dataYear = 2012
-        foodType = foodName[0]
+        a = np.where(data12 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data13:
         dataYear = 2013
-        foodType = foodName[0]
+        a = np.where(data13 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data14:
         dataYear = 2014
-        foodType = foodName[0]
+        a = np.where(data14 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data15:
         dataYear = 2015
-        foodType = foodName[0]
+        a = np.where(data15 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data16:
         dataYear = 2016
-        foodType = foodName[0]
+        a = np.where(data16 == amount)[0]
+        foodType = foodName[a[0]]
     elif amount in data17:
         dataYear = 2017
-        foodType = foodName[0]
-    print("Price ($) per million: {},\nYear: {},\nCategory: {}".format(amount, dataYear, foodType))
+        a = np.where(data17 == amount)[0]
+        foodType = foodName[a[0]]
+    msg.remove()
+    msg = ax.annotate("Category: {},\nYear: {},\nPrice ($) per Million: {}\n".format(foodType, dataYear, amount),
+                      xy=(0, 0), xytext=(6, 18000))
+    plt.show()
 
 ax.bar(ind - width*9.5, data99, width, picker=1)
 ax.bar(ind - width*8.5, data00, width, picker=1)
