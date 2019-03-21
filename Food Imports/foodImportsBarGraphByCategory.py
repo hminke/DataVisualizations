@@ -182,35 +182,39 @@ def onpick(event):
         a = np.where(data17 == amount)[0]
         foodType = foodName[a[0]]
     msg.remove()
-    msg = ax.annotate("Category: {},\nYear: {},\nPrice ($) per Million: {}\n".format(foodType, dataYear, amount),
+    msg = ax.annotate("Category: {},\nYear: {},\nPrice ($) in Millions: {}\n".format(foodType, dataYear, amount),
                       xy=(0, 0), xytext=(6, 18000))
     plt.show()
 
-ax.bar(ind - width*9.5, data99, width, picker=1)
-ax.bar(ind - width*8.5, data00, width, picker=1)
-ax.bar(ind - width*7.5, data01, width, picker=1)
-ax.bar(ind - width*6.5, data02, width, picker=1)
-ax.bar(ind - width*5.5, data03, width, picker=1)
-ax.bar(ind - width*4.5, data04, width, picker=1)
-ax.bar(ind - width*3.5, data05, width, picker=1)
-ax.bar(ind - width*2.5, data06, width, picker=1)
-ax.bar(ind - width*1.5, data07, width, picker=1)
-ax.bar(ind - width/2, data08, width, picker=1)
-ax.bar(ind + width/2, data09, width, picker=1)
-ax.bar(ind + width*1.5, data10, width, picker=1)
-ax.bar(ind + width*2.5, data11, width, picker=1)
-ax.bar(ind + width*3.5, data12, width, picker=1)
-ax.bar(ind + width*4.5, data13, width, picker=1)
-ax.bar(ind + width*5.5, data14, width, picker=1)
-ax.bar(ind + width*6.5, data15, width, picker=1)
-ax.bar(ind + width*7.5, data16, width, picker=1)
-ax.bar(ind + width*8.5, data17, width, picker=1)
+year99 = ax.bar(ind - width*9.5, data99, width, picker=1)
+year00 = ax.bar(ind - width*8.5, data00, width, picker=1)
+year01 = ax.bar(ind - width*7.5, data01, width, picker=1)
+year02 = ax.bar(ind - width*6.5, data02, width, picker=1)
+year03 = ax.bar(ind - width*5.5, data03, width, picker=1)
+year04 = ax.bar(ind - width*4.5, data04, width, picker=1)
+year05 = ax.bar(ind - width*3.5, data05, width, picker=1)
+year06 = ax.bar(ind - width*2.5, data06, width, picker=1)
+year07 = ax.bar(ind - width*1.5, data07, width, picker=1)
+year08 = ax.bar(ind - width/2, data08, width, picker=1)
+year09 = ax.bar(ind + width/2, data09, width, picker=1)
+year10 = ax.bar(ind + width*1.5, data10, width, picker=1)
+year11 = ax.bar(ind + width*2.5, data11, width, picker=1)
+year12 = ax.bar(ind + width*3.5, data12, width, picker=1)
+year13 = ax.bar(ind + width*4.5, data13, width, picker=1)
+year14 = ax.bar(ind + width*5.5, data14, width, picker=1)
+year15 = ax.bar(ind + width*6.5, data15, width, picker=1)
+year16 = ax.bar(ind + width*7.5, data16, width, picker=1)
+year17 = ax.bar(ind + width*8.5, data17, width, picker=1)
 
-ax.set_ylabel('Price ($) per Million')
+ax.set_ylabel('Price ($) in Millions')
 ax.set_title('Food Imports by Category from 1999 - 2017')
 ax.set_xticks(ind)
 ax.set_xticklabels(('Live\nmeat\nanimals', 'Meats', 'Fish\nand\nshellfish', 'Dairy', 'Vegies', 'Fruits', 'Nuts',
                     'Coffee,\ntea, and\nspices', 'Grains', 'Veg.\noils', 'Sugar\nand\ncandy',
                     'Cocoa\nand\nchoc.', 'Other\nedible\nprod.', 'Bev.', '  Liquors'))
+ax.legend((year99, year00, year01, year02, year03, year04, year05, year06, year07, year08, year09, year10, year11,
+           year12, year13, year14, year15, year16, year17), ('1999', '2000', '2001', '2002', '2003', '2004', '2005',
+                                                             '2006', '2007', '2008', '2009', '2010', '2011', '2012',
+                                                             '2013', '2014', '2015', '2016', '2017'))
 fig.canvas.mpl_connect('pick_event', onpick)
 plt.show()
