@@ -30,19 +30,85 @@ class MyCalendar(object):
             day = word[0].split('/')
             self.particleCount.setdefault(int(day[1]), float(word[1]))
 
+    def addColor(self, data):
+
+        calendarData = np.zeros((172, 256, 3))
+
+        if data <51:
+            for i in range(172):
+                for j in range(256):
+                    for k in range(3):
+                        if k == 0:
+                            calendarData[i][j][k] = 0
+                        elif k == 1:
+                            calendarData[i][j][k] = 1
+                        elif k == 2:
+                            calendarData[i][j][k] = 0
+        elif data < 101:
+            for i in range(172):
+                for j in range(256):
+                    for k in range(3):
+                        if k == 0:
+                            calendarData[i][j][k] = 1
+                        elif k == 1:
+                            calendarData[i][j][k] = 1
+                        elif k == 2:
+                            calendarData[i][j][k] = 0
+        elif data < 151:
+            for i in range(172):
+                for j in range(256):
+                    for k in range(3):
+                        if k == 0:
+                            calendarData[i][j][k] = 1
+                        elif k == 1:
+                            calendarData[i][j][k] = 0.6
+                        elif k == 2:
+                            calendarData[i][j][k] = 0.2
+        elif data < 201:
+            for i in range(172):
+                for j in range(256):
+                    for k in range(3):
+                        if k == 0:
+                            calendarData[i][j][k] = 1
+                        elif k == 1:
+                            calendarData[i][j][k] = 0
+                        elif k == 2:
+                            calendarData[i][j][k] = 0
+        elif data < 301:
+            for i in range(172):
+                for j in range(256):
+                    for k in range(3):
+                        if k == 0:
+                            calendarData[i][j][k] = 0.6
+                        elif k == 1:
+                            calendarData[i][j][k] = 0
+                        elif k == 2:
+                            calendarData[i][j][k] = 0.6
+        else:
+            for i in range(172):
+                for j in range(256):
+                    for k in range(3):
+                        if k == 0:
+                            calendarData[i][j][k] = 0.6
+                        elif k == 1:
+                            calendarData[i][j][k] = 0
+                        elif k == 2:
+                            calendarData[i][j][k] = 0.298
+
+        return calendarData
+
     def show(self):
         # Create the calendar
         fig, axs = plt.subplots(len(self.calendar), 7, sharex=True, sharey=True)
-        calendarData = np.zeros((5, 8))
         for week, ax_row in enumerate(axs):
             for weekDay, ax in enumerate(ax_row):
                 ax.set_xticks([])
                 ax.set_yticks([])
                 if self.calendar[week][weekDay] != 0:
-                    for i in range(5):
-                        for j in range(8):
-                            calendarData[i][j] = self.particleCount.get(self.calendar[week][weekDay])
-                    ax.imshow(calendarData, interpolation='none', cmap='RdYlBu')
+                    calendarData = self.particleCount.get(self.calendar[week][weekDay])
+                    dataColor = self.addColor(calendarData)
+                    ax.imshow(dataColor)
+                    # ax.imshow(np.zeros((172, 256, 3), dtype=np.float32))
                     ax.text(0.02, 0.98, str(self.calendar[week][weekDay]), verticalalignment='top',
                             horizontalalignment='left')
 
