@@ -9,7 +9,7 @@ fig = plt.figure()
 ax = plt.axes([0, 0, 1, 1], projection=ccrs.LambertConformal())
 ax.set_extent([-160, -72, 20, 72], ccrs.Geodetic())
 
-data = open("motorcycleRegistration.txt","r")
+data = open("motorcycleRegistration.txt", "r")
 shapeName = 'admin_1_states_provinces_lakes_shp'
 states_shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shapeName)
 registration = {}
