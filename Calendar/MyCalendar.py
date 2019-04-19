@@ -28,12 +28,16 @@ class MyCalendar(object):
             day = word[0].split('/')
             self.particleCount.setdefault(int(day[1]), float(word[1]))
 
-    def addColor(self, data):
+    def addColor(self, data, size):
 
-        calendarData = np.zeros((172, 256, 3))
+        if size == 5:
+            rowSize = 172
+        elif size == 6:
+            rowSize = 144
+        calendarData = np.zeros((rowSize, 256, 3))
 
         if data <51:
-            for i in range(172):
+            for i in range(rowSize):
                 for j in range(256):
                     for k in range(3):
                         if k == 0:
@@ -43,7 +47,7 @@ class MyCalendar(object):
                         elif k == 2:
                             calendarData[i][j][k] = 0
         elif data < 101:
-            for i in range(172):
+            for i in range(rowSize):
                 for j in range(256):
                     for k in range(3):
                         if k == 0:
@@ -53,7 +57,7 @@ class MyCalendar(object):
                         elif k == 2:
                             calendarData[i][j][k] = 0
         elif data < 151:
-            for i in range(172):
+            for i in range(rowSize):
                 for j in range(256):
                     for k in range(3):
                         if k == 0:
@@ -63,7 +67,7 @@ class MyCalendar(object):
                         elif k == 2:
                             calendarData[i][j][k] = 0.2
         elif data < 201:
-            for i in range(172):
+            for i in range(rowSize):
                 for j in range(256):
                     for k in range(3):
                         if k == 0:
@@ -73,7 +77,7 @@ class MyCalendar(object):
                         elif k == 2:
                             calendarData[i][j][k] = 0
         elif data < 301:
-            for i in range(172):
+            for i in range(rowSize):
                 for j in range(256):
                     for k in range(3):
                         if k == 0:
@@ -83,7 +87,7 @@ class MyCalendar(object):
                         elif k == 2:
                             calendarData[i][j][k] = 0.6
         else:
-            for i in range(172):
+            for i in range(rowSize):
                 for j in range(256):
                     for k in range(3):
                         if k == 0:
@@ -112,7 +116,7 @@ class MyCalendar(object):
                 ax.set_yticks([])
                 if self.calendar[week][weekDay] != 0:
                     calendarData = self.particleCount.get(self.calendar[week][weekDay])
-                    dataColor = self.addColor(calendarData)
+                    dataColor = self.addColor(calendarData, len(self.calendar))
                     ax.imshow(dataColor)
                     ax.text(0.02, 0.98, str(self.calendar[week][weekDay]), verticalalignment='top',
                             horizontalalignment='left')
@@ -127,9 +131,3 @@ class MyCalendar(object):
         fig.suptitle(months[self.month - 1] + ' ' + str(self.year), fontsize=14)
         plt.title(self.title, fontweight='bold', x=-2.5, y=-0.5, fontsize=20)
         plt.show()
-
-february = MyCalendar(2016, 2, "Air Pollution in Mumbai_Feb_2016.txt")
-february.show()
-
-october = MyCalendar(2016, 10, 'Air Pollution in Mumbai_October_2016.txt')
-october.show()
