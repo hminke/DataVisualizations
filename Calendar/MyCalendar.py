@@ -13,11 +13,9 @@ class MyCalendar(object):
 
     particleCount = {}
 
-    #Todo: Add data portion to show method
-
     def __init__(self, year, month, fileName):
 
-        temp = fileName.split('.')
+        temp = fileName.split('_')
         self.year = year
         self.month = month
         self.calendar = cal.monthcalendar(year, month)  #creates a list of lists for each week
@@ -100,6 +98,14 @@ class MyCalendar(object):
     def show(self):
         # Create the calendar
         fig, axs = plt.subplots(len(self.calendar), 7, sharex=True, sharey=True)
+        fig.text(0.02, 0.75, 'LEGEND:', fontweight='bold', fontsize=14)
+        fig.text(0.005, 0.7, 'Green: 0 - 50 (Good)')
+        fig.text(0.005, 0.64, 'Yellow: 51 - 100 \n       (Moderate)')
+        fig.text(0.005, 0.555, 'Orange: 101 - 150\n  (Unhealthy for\n  Sensitive Groups)')
+        fig.text(0.005, 0.495, 'Red: 151 - 200\n      (Unhealthy)')
+        fig.text(0.005, 0.435, 'Purple: 201 - 300\n       (Very Unhealthy)')
+        fig.text(0.005, 0.375, 'Maroon: 301 - 500\n       (Hazardous)')
+
         for week, ax_row in enumerate(axs):
             for weekDay, ax in enumerate(ax_row):
                 ax.set_xticks([])
@@ -108,7 +114,6 @@ class MyCalendar(object):
                     calendarData = self.particleCount.get(self.calendar[week][weekDay])
                     dataColor = self.addColor(calendarData)
                     ax.imshow(dataColor)
-                    # ax.imshow(np.zeros((172, 256, 3), dtype=np.float32))
                     ax.text(0.02, 0.98, str(self.calendar[week][weekDay]), verticalalignment='top',
                             horizontalalignment='left')
 
@@ -123,5 +128,8 @@ class MyCalendar(object):
         plt.title(self.title, fontweight='bold', x=-2.5, y=-0.5, fontsize=20)
         plt.show()
 
-february = MyCalendar(2016, 2, "Air Pollution in Mumbai.txt")
+february = MyCalendar(2016, 2, "Air Pollution in Mumbai_Feb_2016.txt")
 february.show()
+
+october = MyCalendar(2016, 10, 'Air Pollution in Mumbai_October_2016.txt')
+october.show()
