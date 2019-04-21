@@ -17,7 +17,7 @@ ax.set_extent([-160, -72, 20, 72], ccrs.Geodetic())
 shapeName = 'admin_1_states_provinces_lakes_shp'
 states_shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shapeName)
 animationYear = 2010
-animationTitle = ax.text(0.5, 0.85, "", transform=ax.transAxes, ha="center", fontsize=20)
+animationTitle = ax.text(0.75, 0.85, "", transform=ax.transAxes, ha="center", fontsize=14)
 
 def getData(fileName):
 
@@ -115,6 +115,7 @@ def init():                     # init function for the animation
     for state in shpreader.Reader(states_shp).records():
         edgeColor = 'black'
         animate.append(ax.add_geometries([state.geometry], ccrs.PlateCarree(), edgeColor=edgeColor))
+    animate.append(animationTitle)
     return animate
 
 def update(data):
@@ -135,6 +136,8 @@ def update(data):
         color = getColor(stateDens)
         animate.append(ax.add_geometries([state.geometry], ccrs.PlateCarree(), faceColor=color, edgeColor=edgeColor,
                                          label=state))
+
+    animate.append(animationTitle)
     animationYear += 1
     if animationYear > 2018:
         animationYear = 2010
@@ -143,12 +146,11 @@ def update(data):
 
 def show(fileName):
 
-    # global cmap
     data10, percentage10, data11, percentage11, data12, percentage12, data13, percentage13, data14, percentage14,\
     data15, percentage15, data16, percentage16, data17, percentage17, data18, percentage18 = getData(fileName)
 
     dataSet = [data10, data11, data12, data13, data14, data15, data16, data17, data18]
-    FRAME_DELTA = 500
+    FRAME_DELTA = 2000
     range1 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2))
     range2 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4))
     range3 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(6))
