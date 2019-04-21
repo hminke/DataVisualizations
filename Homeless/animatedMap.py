@@ -5,6 +5,19 @@ import matplotlib as mpl
 import numpy as np
 import matplotlib.patches as mpatches
 import csv
+import matplotlib.animation as animation
+
+c = np.arange(1, 10)
+norm = mpl.colors.Normalize(vmin=c.min(), vmax=c.max())
+cmap = mpl.cm.ScalarMappable(norm=norm, cmap=mpl.cm.Reds)
+cmap.set_array([])
+fig = plt.figure()
+ax = plt.axes([0, 0, 1, 1], projection=ccrs.LambertConformal())
+ax.set_extent([-160, -72, 20, 72], ccrs.Geodetic())
+shapeName = 'admin_1_states_provinces_lakes_shp'
+states_shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shapeName)
+animationYear = 2010
+animationTitle = ax.text(0.5, 0.85, "", transform=ax.transAxes, ha="center", fontsize=20)
 
 def getData(fileName):
 
@@ -30,7 +43,6 @@ def getData(fileName):
 
     with open(fileName, 'r') as fil:
         data = csv.DictReader(fil, delimiter=',')
-        i = 0
 
         for row in data:
             stateName = row['State']
@@ -76,15 +88,12 @@ def getData(fileName):
                     data18.setdefault(stateName, int(numOfPeople))
                     percentage18.setdefault(stateName, percentage)
 
-    return stateName, years, data10, percentage10, data11, percentage11, data12, percentage12, data13, percentage13, \
-           data14, percentage14, data15, percentage15, data16, percentage16, data17, percentage17, data18, percentage18
+    return data10, percentage10, data11, percentage11, data12, percentage12, data13, percentage13, data14, percentage14,\
+           data15, percentage15, data16, percentage16, data17, percentage17, data18, percentage18
 
 def getColor(data):
 
-    c = np.arange(1, 10)
-    norm = mpl.colors.Normalize(vmin=c.min(), vmax=c.max())
-    cmap = mpl.cm.ScalarMappable(norm=norm, cmap=mpl.cm.Greens)
-    cmap.set_array([])
+    global cmap
 
     if data < 1400:
         faceColor = cmap.to_rgba(2)
@@ -99,4 +108,59 @@ def getColor(data):
 
     return faceColor
 
-getData('homelessMap.csv')
+def init():                     # init function for the animation
+    global cmap
+    animate = []
+
+    for state in shpreader.Reader(states_shp).records():
+        edgeColor = 'black'
+        animate.append(ax.add_geometries([state.geometry], ccrs.PlateCarree(), edgeColor=edgeColor))
+    return animate
+
+def update(data):
+    global animationYear
+    animate = []
+    animationTitle.set_text('Homeless People in the U.S. in {}'.format(animationYear))
+
+    # animationTitle.set_text('Food Imports for {}'.format(animationYear))
+    for state in shpreader.Reader(states_shp).records():
+
+        edgeColor = 'black'
+
+        try:
+            stateDens = data[state.attributes['name']]
+        except:
+            stateDens = 0
+
+        color = getColor(stateDens)
+        animate.append(ax.add_geometries([state.geometry], ccrs.PlateCarree(), faceColor=color, edgeColor=edgeColor,
+                                         label=state))
+    animationYear += 1
+    if animationYear > 2018:
+        animationYear = 2010
+
+    return animate
+
+def show(fileName):
+
+    # global cmap
+    data10, percentage10, data11, percentage11, data12, percentage12, data13, percentage13, data14, percentage14,\
+    data15, percentage15, data16, percentage16, data17, percentage17, data18, percentage18 = getData(fileName)
+
+    dataSet = [data10, data11, data12, data13, data14, data15, data16, data17, data18]
+    FRAME_DELTA = 500
+    range1 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2))
+    range2 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4))
+    range3 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(6))
+    range4 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(8))
+    range5 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(10))
+
+    labels = ['< 1,400', '2,901 - 6,000', '6,001 - 9,900', '9,901 - 13,500', '> 13,500']
+
+    plt.legend([range1, range2, range3, range4, range5], labels, loc='upper left', fancybox=True,
+               bbox_to_anchor=(-0.25, 1.0))
+    ax.outline_patch.set_visible(False)
+    ani = animation.FuncAnimation(fig, update, frames=dataSet, init_func=init, interval=FRAME_DELTA, blit=True)
+    plt.show()
+
+show('homelessMap.csv')
