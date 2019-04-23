@@ -1,0 +1,17 @@
+Chicago, IL - MDW		
+Austin, TX - AUS		
+Baltimore, MD - BWI		
+Charlotte-Doublas, NC - CLT	
+Cleveland, OH - CLE		
+Denver, CO - DEN		
+Jacksonville, FL - JAX		
+Manchester, NH - MHT		
+Memphis, TN - MEM		
+Nashville, TN - BNA		
+Oakland, CA - OAK		
+Orlando, FL - MCO		
+Philadelphia, PA - PHL		
+Sacramento, CA - SMF		
+Salt Lake City, UT - SLC	
+San Diego, CA - SAN		
+Tucson, AZ - TUS		

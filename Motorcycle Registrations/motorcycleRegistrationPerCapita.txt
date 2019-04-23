@@ -1,0 +1,51 @@
+South Dakota : 12
+New Hampshire : 17
+Iowa : 18
+Wisconsin : 18
+Wyoming : 19
+North Dakota : 21
+Vermont : 21
+Montana : 21
+Minnesota : 22
+Alaska : 23
+Idaho : 25
+Maine : 26
+New Jersey : 27
+Colorado : 29
+Delaware : 30
+Ohio : 30
+Oklahoma : 30
+Washington : 31
+Pennsylvania : 31
+Indiana : 32
+New Mexico : 32
+Rhode Island : 32
+Michigan : 32
+Florida : 33
+West Virginia : 33
+Kansas : 35
+Oregon : 35
+Nebraska : 36
+Arizona : 36
+Connecticut : 36
+Illinois : 37
+Alabama : 38
+Tennessee : 38
+Arkansas : 38
+Nevada : 39
+Virginia : 41
+Massachusetts : 41
+Missouri : 43
+North Carolina : 43
+South Carolina : 43
+Kentucky : 44
+Hawaii : 45
+California : 47
+Utah : 47
+Maryland : 48
+Georgia : 49
+New York : 56
+Texas : 58
+Louisiana : 67
+Mississippi : 106
+District of Columbia : 172

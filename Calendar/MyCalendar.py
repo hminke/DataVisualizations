@@ -103,12 +103,12 @@ class MyCalendar(object):
         # Create the calendar
         fig, axs = plt.subplots(len(self.calendar), 7, sharex=True, sharey=True)
         fig.text(0.02, 0.75, 'LEGEND:', fontweight='bold', fontsize=14)
-        fig.text(0.005, 0.7, 'Green: 0 - 50 (Good)')
-        fig.text(0.005, 0.64, 'Yellow: 51 - 100 \n       (Moderate)')
-        fig.text(0.005, 0.555, 'Orange: 101 - 150\n  (Unhealthy for\n  Sensitive Groups)')
-        fig.text(0.005, 0.495, 'Red: 151 - 200\n      (Unhealthy)')
-        fig.text(0.005, 0.435, 'Purple: 201 - 300\n       (Very Unhealthy)')
-        fig.text(0.005, 0.375, 'Maroon: 301 - 500\n       (Hazardous)')
+        fig.text(0.005, 0.7, 'Green: 0 - 50 (Good)', color='lime')
+        fig.text(0.005, 0.64, 'Yellow: 51 - 100 \n       (Moderate)', color='yellow')
+        fig.text(0.005, 0.555, 'Orange: 101 - 150\n  (Unhealthy for\n  Sensitive Groups)', color='orange')
+        fig.text(0.005, 0.495, 'Red: 151 - 200\n      (Unhealthy)', color='red')
+        fig.text(0.005, 0.435, 'Purple: 201 - 300\n       (Very Unhealthy)', color='purple')
+        fig.text(0.005, 0.375, 'Maroon: 301 - 500\n       (Hazardous)', color='maroon')
 
         for week, ax_row in enumerate(axs):
             for weekDay, ax in enumerate(ax_row):
