@@ -7,7 +7,7 @@ from matplotlib.patches import Rectangle
 FRAME_DELTA = 500       # milliseconds
 animationYear = 1999
 fig, ax, = plt.subplots()
-animationTitle = ax.text(0.5, 0.85, "", transform=ax.transAxes, ha="center")
+animationTitle = ax.text(0.5, 0.85, "", transform=ax.transAxes, ha="center", fontsize=20)
 index = 0
 N = 15
 ind = np.arange(N)
