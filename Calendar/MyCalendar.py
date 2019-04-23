@@ -5,6 +5,7 @@ import numpy as np
 #I used code from https://stackoverflow.com/questions/42171990/create-a-one-month-calendar-with-events-on-it-in-python
 #to create a calendar and modified it to meet the needs of this project.
 
+
 cal.setfirstweekday(6)  # Setting Sunday as the first day
 weekdays = 'Sun Mon Tues Wed Thurs Fri Sat'.split()
 months = 'January February March April May June July August September October November December'.split()
@@ -119,7 +120,6 @@ class MyCalendar(object):
                     dataColor = self.addColor(calendarData, len(self.calendar))
                     ax.imshow(dataColor)
                     ax.text(0.02, 0.98, str(self.calendar[week][weekDay]), verticalalignment='top',
-                            horizontalalignment='left')
 
         # Use the titles of the first row as the weekdays
         for number, day in enumerate(weekdays):
