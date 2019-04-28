@@ -162,7 +162,7 @@ def show(fileName):
     plt.legend([range1, range2, range3, range4, range5], labels, loc='upper left', fancybox=True,
                bbox_to_anchor=(-0.25, 1.0))
     ax.outline_patch.set_visible(False)
-    ani = animation.FuncAnimation(fig, update, frames=dataSet, init_func=init, interval=FRAME_DELTA, blit=True)
+    animation.FuncAnimation(fig, update, frames=dataSet, init_func=init, interval=FRAME_DELTA, blit=True)
     plt.show()
 
 show('homelessMap.csv')
