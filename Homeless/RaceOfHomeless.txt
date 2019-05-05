@@ -1,0 +1,6 @@
+White : 1861 (75.7%)
+Black : 754 (21.9%)
+Asian : 17 (0.5%)
+American Indian : 154 (4.5%)
+Native Hawaiian : 38 (1.1%)
+Multi Racial : 341 (9.9%)

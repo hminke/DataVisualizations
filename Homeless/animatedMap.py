@@ -7,6 +7,7 @@ import matplotlib.patches as mpatches
 import csv
 import matplotlib.animation as animation
 
+
 c = np.arange(1, 10)
 norm = mpl.colors.Normalize(vmin=c.min(), vmax=c.max())
 cmap = mpl.cm.ScalarMappable(norm=norm, cmap=mpl.cm.Reds)
@@ -17,7 +18,7 @@ ax.set_extent([-160, -72, 20, 72], ccrs.Geodetic())
 shapeName = 'admin_1_states_provinces_lakes_shp'
 states_shp = shpreader.natural_earth(resolution='110m', category='cultural', name=shapeName)
 animationYear = 2010
-animationTitle = ax.text(0.75, 0.85, "", transform=ax.transAxes, ha="center", fontsize=14)
+animationTitle = ax.text(0.55, 0.95, "", transform=ax.transAxes, ha="center", fontsize=22, fontweight='bold')
 
 def getData(fileName):
 
@@ -112,9 +113,11 @@ def init():                     # init function for the animation
     global cmap
     animate = []
 
+    ax.set_extent([-125, -66.5, 20, 50], ccrs.Geodetic())
+
     for state in shpreader.Reader(states_shp).records():
         edgeColor = 'black'
-        animate.append(ax.add_geometries([state.geometry], ccrs.PlateCarree(), edgeColor=edgeColor))
+        animate.append(ax.add_geometries([state.geometry], ccrs.LambertConformal, edgeColor=edgeColor))
     animate.append(animationTitle)
     return animate
 
@@ -150,7 +153,7 @@ def show(fileName):
     data15, percentage15, data16, percentage16, data17, percentage17, data18, percentage18 = getData(fileName)
 
     dataSet = [data10, data11, data12, data13, data14, data15, data16, data17, data18]
-    FRAME_DELTA = 2000
+    FRAME_DELTA = 1500
     range1 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(2))
     range2 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(4))
     range3 = mpatches.Rectangle((0, 0), 1, 1, facecolor=cmap.to_rgba(6))
@@ -160,7 +163,7 @@ def show(fileName):
     labels = ['< 1,400', '2,901 - 6,000', '6,001 - 9,900', '9,901 - 13,500', '> 13,500']
 
     plt.legend([range1, range2, range3, range4, range5], labels, loc='upper left', fancybox=True,
-               bbox_to_anchor=(-0.25, 1.0))
+               bbox_to_anchor=(0, 0.25), fontsize=16)
     ax.outline_patch.set_visible(False)
     ani = animation.FuncAnimation(fig, update, frames=dataSet, init_func=init, interval=FRAME_DELTA, blit=True)
     plt.show()
